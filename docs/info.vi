@@ -1,0 +1,96 @@
+# QACE
+qace is the Quest Adventure Cli Engine. This document explain and include itself information about structure of engine and idea. This is not a full documentation.
+
+## Typographical agreements
+name.ext - file represent
+[name] - directory represent
+(1) or (A) number or letter in brackets - annotation links
+<> - start code sample if have
+<-> - end code sample if have
+
+or something else, i don't know.
+
+
+
+# Engine Folder structure [Prototype]
+/[Engine Based Application]--|
+			 (A) |-[Engine]
+			 (B) |-[Resources]------|
+			 (C) |-info.eit	   (B1) |-[Locations]---------------|
+					   (B2) |-[SFX]              (B1-1) |-[place1]
+					   (B3) |-[Mid]                     |-[place*]
+					   (B4) |-[HQS]
+					   (B5) |-[LQSS]
+					   (B6) |-[Assets]-----|         
+					   (B7) |-release.eit  |-[Global]
+				`	   (B8) |-a.buf
+
+~/.qace_saves/EBA/save.psf (D)
+
+#############################################
+
+A - Binary files of the Engine
+
+B - Resources for Game
+	B1 - Locations directory contain subdirectories with different places(maps), what have own additional content
+	B2 - SFX directory contain sounds in one of three formats : MID HQS LQSS
+	B3 - MID directory contain midi tables with music
+	B4 - HQS directory contain High Quality Sound fexam wav/flac/ogg
+	B5 - LQSS directory contain Low Quality Speaker Sound | expected for legacy systems, what have only pc speaker for sound.
+	B6 - Assets directory contain objects what can be ineracted or called on any Location of game.
+	B7 - release.eit file contains information about author and main "Text ART"
+	B8 - a.buf file is used to exchange data between engine and GIA addons
+
+C - info.eit
+	This file contains Application information for example: Date of Release, Version, Platform, Architecture, Engine version, description of Application.
+
+D - Directory contains save.psf, what storage information about game progress (progress state file)
+
+
+#############################################
+File extensions
+
+eit - engine information table
+spk - speaker lq sound
+gia - game interact addon, binary files, what can add functionality by working with buffer file
+ait - asset information table
+psf - progress state file
+
+#############################################
+Engine structure
+
+WHAT? IDK, but guess this is pizdec.
+
+#############################################
+Locations and places
+
+Locations directory contain places (what we can call as map's)
+
+places structure example:
+
+[laboratory]-|
+/-----------<|-[LocalAssets]
+|	     |-[Dialogs]----------------------------------------------------------|
+|	     |-[Characters]---|							  |-[Gordon]--------------|
+|	     |-pinfo.eit      |-[Gordon]-----------------------|		  |-[LabMem]-|	          |-Get crowbar
+|			      |				       |-description.ait	     |-greeting	  |-make cascade resonance
+|			      |-[LabMem]---|		       |-imagination.ait	     |-get beer
+|					   |-description.ait   |-cinfo.ait
+|					   |-imagination.ait
+|					   |-cinfo.ait
+|-[crowbar]
+|-[beer]
+|-[box]
+|-[sugar machine]
+|-Terminal.gia
+
+
+pinfo.eit - quests list and conditions, quest priotity
+Dialogs - just raw text files
+Characters - other type of assets
+LocalAssets - assets of objects in place
+	have same structure as Characters Assets
+Terminal.gia - binary asset what contains binary file for interacting (fexam mini game)
+
+
+SO its now all bullshit.
